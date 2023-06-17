@@ -1,3 +1,5 @@
+
+
 import { Product } from '@/types/generic'
 import React from 'react'
 

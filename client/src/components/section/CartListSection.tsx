@@ -1,3 +1,5 @@
+
+'use client'
 import { Product } from '@/types/generic'
 import { getCartItems } from '@/utils/cart'
 import React from 'react'

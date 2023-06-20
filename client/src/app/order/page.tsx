@@ -57,7 +57,7 @@ function Order() {
     // listen for messages
     ws.onmessage = (event) => {
 
-        console.log(event)
+
         const data = JSON.parse(event.data)
         console.log(data)
         setOrderStatus(data.status)

@@ -25,4 +25,12 @@ export type Checkout = {
         }
     }
 
-export type OrderStatus = 'pending' | 'completed' | 'cancelled'
+export type OrderStatus = 'pending' | 'completed' | 'cancelled' | 'payment'
+
+export type WebScoketMessage = {
+    type: string
+    payload: {
+        status: OrderStatus
+        message: string
+    }
+}

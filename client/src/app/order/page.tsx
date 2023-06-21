@@ -1,12 +1,14 @@
 "use client";
 import React, {useState} from "react";
 import { useSearchParams } from "next/navigation";
-import { OrderStatus } from "@/types/generic";
+import { OrderStatus, WebScoketMessage } from "@/types/generic";
 import { Player } from '@lottiefiles/react-lottie-player';
 
 import completedAnimation from '../../../src/animation/completed.json'
 import laodingAnimation from '../../../src/animation/loading.json'
 import failedAnimation from '../../../src/animation/failed.json'
+import paymentAnimation from '../../../src/animation/payment.json'
+
 
 
 
@@ -17,6 +19,8 @@ function Order() {
 
  // state for order status (pending, completed, failed)
     const [orderStatus, setOrderStatus] = useState<OrderStatus>("pending");
+    const [messageWebsocket, setMessageWebsocket] = useState<string>('We receive the order, waiting...');
+
     const [websocketStatus, setWebsocketStatus] = useState<"connected" | "disconnected" | "error">('disconnected')
 
   if (!callbackUrl) {
@@ -56,11 +60,10 @@ function Order() {
 
     // listen for messages
     ws.onmessage = (event) => {
-
-
-        const data = JSON.parse(event.data)
+        const data: WebScoketMessage = JSON.parse(event.data)
         console.log(data)
-        setOrderStatus(data.status)
+        setOrderStatus(data.payload.status)
+        setMessageWebsocket(data.payload.message)
     }
 
     // disconnect websocket connection
@@ -85,13 +88,9 @@ function Order() {
     
         <div className="flex flex-col my-8 justify-center items-center">
             {
-                orderStatus === "pending" ? (
-                    <p>We receive the order, waiting...</p>
-                ) : orderStatus === "completed" ? (
-                    <p>Order completed</p>
-                ) : (
-                    <p>Order failed</p>
-                )
+               
+                    <p>{messageWebsocket}</p>
+              
             }
             <Player
                 autoplay
@@ -101,6 +100,8 @@ function Order() {
                         ? laodingAnimation
                         : orderStatus === "completed"
                         ? completedAnimation
+                        : orderStatus === 'payment'
+                        ? paymentAnimation
                         : failedAnimation
 
                 }
@@ -109,11 +110,6 @@ function Order() {
             </Player>
         </div>
             )}
-
-        
-
-       
-
     </section>
   );
 }

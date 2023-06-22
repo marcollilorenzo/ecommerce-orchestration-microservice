@@ -11,9 +11,12 @@ function ProductListSection() {
         fetch('/api/products')
         .then((res) => res.json())
         .then((data) => {
-            console.log(data)
+            if(data.error) {
+                return
+            }
             setProducts(data)
         })
+        .catch((err) => console.log(err))
     }, [])
 
 

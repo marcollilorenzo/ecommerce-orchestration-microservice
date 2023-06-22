@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { DynamoDBClient, ScanCommand } from "@aws-sdk/client-dynamodb";
+import { Product } from '@/types/generic';
 
 const AWS_REGION = "YOUR_AWS_REGION";
 const AWS_ACCESS_KEY_ID = "YOUR_AWS_ACCESS_KEY_ID";
@@ -30,14 +31,13 @@ export async function GET(res: NextResponse, req: Request) {
       })
     }
 
-    const items = scanResult.Items.map((item) => {
+    // create array of product
+    const items: Product[] = scanResult.Items.map((item) => {
       const formattedItem: { [key: string]: any } = {};
-
-      for (const key of Object.keys(item)) {
+      Object.keys(item).forEach((key) => {
         formattedItem[key] = getItemValue(item[key]);
-      }
-
-      return formattedItem;
+      });
+      return formattedItem as Product;
     });
 
 

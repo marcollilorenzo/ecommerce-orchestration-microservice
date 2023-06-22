@@ -62,8 +62,8 @@ function Order() {
     ws.onmessage = (event) => {
         const data: WebScoketMessage = JSON.parse(event.data)
         console.log(data)
-        setOrderStatus(data.payload.status)
-        setMessageWebsocket(data.payload.message)
+        setOrderStatus(data.status)
+        setMessageWebsocket(data.message)
     }
 
     // disconnect websocket connection

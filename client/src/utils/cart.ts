@@ -1,7 +1,7 @@
 export 
 // add product to cart using local storage
 const addToCart = (
-    id: number,
+    productId: number,
     name: string,
     price: number,
     imageUrl: string,
@@ -13,7 +13,7 @@ const addToCart = (
         // create a new cart with the product
         const newCart = [
             {
-                id,
+                productId,
                 name,
                 price,
                 imageUrl,
@@ -28,7 +28,7 @@ const addToCart = (
         const cartArray = JSON.parse(cart)
         // check if the product is already in the cart
         const existingProductIndex = cartArray.findIndex(
-            (product: { id: number }) => product.id === id
+            (product: { productId: number }) => product.productId === productId
         )
         // if product is already in the cart
         if (existingProductIndex !== -1) {
@@ -38,7 +38,7 @@ const addToCart = (
             // if product is not in the cart
             // add the product to the cart
             cartArray.push({
-                id,
+                productId,
                 name,
                 price,
                 imageUrl,

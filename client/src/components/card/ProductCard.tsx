@@ -3,13 +3,13 @@ import { addToCart } from '@/utils/cart'
 import React from 'react'
 
 
-function ProductCard({name, price, imageUrl, id}: Product ) {
+function ProductCard({name, price, imageUrl, productId, quantity}: Product ) {
 
     const [loading, setLoading] = React.useState(false)
 
 
   return (
-    <div key={id} className="relative flex w-full  flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+    <div key={productId} className="relative flex w-full  flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
         <div className=' m-1'>
   <div
   style={{
@@ -24,6 +24,7 @@ function ProductCard({name, price, imageUrl, id}: Product ) {
     <a href="#">
       <h5 className="text-xl tracking-tight text-slate-900">{name}</h5>
     </a>
+    <p>Qty: {quantity}</p>
     <div className="mt-2 mb-5 flex items-center justify-between">
       <p>
         <span className="text-3xl font-bold text-slate-900">${price}</span>
@@ -55,7 +56,7 @@ function ProductCard({name, price, imageUrl, id}: Product ) {
             setLoading(false)
         }, 500)
         setLoading(true)
-        addToCart(id, name, price, imageUrl)
+        addToCart(productId, name, price, imageUrl)
     }
     }
     className="flex items-center w-full justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300">

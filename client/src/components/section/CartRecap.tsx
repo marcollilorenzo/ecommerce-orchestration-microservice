@@ -22,7 +22,7 @@ function CartRecap({ }: Props) {
 
         const order: Checkout = {
             basket: getCartItems().map((item: Product) => ({
-                id: item.id,
+                id: item.productId,
                 quantity: item.quantity,
             })),
             shippingAddress: {
@@ -37,7 +37,8 @@ function CartRecap({ }: Props) {
                 cardholderName: 'test',
             }
         }
-
+        
+        console.log(order)
 
         console.log('place order')
 

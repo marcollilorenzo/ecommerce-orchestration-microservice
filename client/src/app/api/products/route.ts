@@ -2,15 +2,12 @@ import { NextResponse } from 'next/server'
 import { DynamoDBClient, ScanCommand } from "@aws-sdk/client-dynamodb";
 import { Product } from '@/types/generic';
 
-const AWS_REGION = "YOUR_AWS_REGION";
-const AWS_ACCESS_KEY_ID = "YOUR_AWS_ACCESS_KEY_ID";
-const AWS_SECRET_ACCESS_KEY = "YOUR_AWS_SECRET_ACCESS_KEY";
 
 const client = new DynamoDBClient({
-  region: AWS_REGION,
+  region: process.env.AWS_REGION,
   credentials: {
-    accessKeyId: AWS_ACCESS_KEY_ID,
-    secretAccessKey: AWS_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
   },
 });
 
@@ -18,7 +15,7 @@ export async function GET(res: NextResponse, req: Request) {
 
   try {
 
-    const scanCommand = new ScanCommand({ TableName: 'products' });
+    const scanCommand = new ScanCommand({ TableName: 'Inventory' });
     const scanResult = await client.send(scanCommand);
 
     if (!scanResult.Items) {

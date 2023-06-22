@@ -14,7 +14,7 @@ function ProductListSection() {
             if(data.error) {
                 return
             }
-            setProducts(data)
+            setProducts(data.body)
         })
         .catch((err) => console.log(err))
     }, [])
@@ -27,7 +27,7 @@ function ProductListSection() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {products.map((product) => (
                     <ProductCard 
-                    key={product.id}
+                    key={product.productId}
                     {...product}
                     />
                 ))}

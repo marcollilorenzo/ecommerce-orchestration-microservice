@@ -26,9 +26,9 @@ function Header() {
             <Link  href={"/"} className='text-center py-8'>Ecommerce</Link>
         </h1>
         <div className='flex justify-end  w-full mr-4'>
-            <button onClick={toggleDrawer} className='bg-blue-500 relative hover:bg-blue-700 text-white font-bold py-2 px-8 rounded'>
+            <Link href={"/checkout"} className='bg-blue-500 relative hover:bg-blue-700 text-white font-bold py-2 px-8 rounded'>
                 Basket 
-            </button>
+            </Link>
            
 
         </div>

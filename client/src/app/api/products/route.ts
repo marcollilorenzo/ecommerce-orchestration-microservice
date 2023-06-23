@@ -24,7 +24,7 @@ export async function GET() : Promise<NextResponse<ResponseBody>> {
 
   try {
 
-    const scanCommand = new ScanCommand({ TableName: 'Inventory' });
+    const scanCommand = new ScanCommand({ TableName: 'Inventory', ConsistentRead: true });
     const scanResult = await client.send(scanCommand);
 
     if (!scanResult.Items) {

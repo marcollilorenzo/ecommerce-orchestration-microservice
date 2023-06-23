@@ -4,6 +4,10 @@ export const addToCart = (
     price: number,
     imageUrl: string,
 ) => {
+
+    // if quantity product is minus 
+
+
     // get the current cart from local storage
     const cart = localStorage.getItem('cart')
     // if cart is empty

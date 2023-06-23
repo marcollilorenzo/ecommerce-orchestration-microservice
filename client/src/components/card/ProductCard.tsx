@@ -56,6 +56,24 @@ function ProductCard({name, price, imageUrl, productId, quantity}: Product ) {
             setLoading(false)
         }, 500)
         setLoading(true)
+       
+        // if quantity in local storage is major than quantity in stock
+        if(localStorage && window) {
+            const cart = localStorage.getItem('cart')
+            if(cart) {
+                const cartItems = JSON.parse(cart)
+                const item = cartItems.find((item: Product) => item.productId === productId)
+                if(item && quantity) {
+                    if(item.quantity + 1  > quantity) {
+                        alert('You cannot add more than the quantity in stock')
+                        return
+                    }
+                }
+            }
+        }
+
+
+
         addToCart(productId, name, price, imageUrl)
     }
     }

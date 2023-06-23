@@ -65,8 +65,12 @@ function Order() {
     const data: WebScoketMessage = JSON.parse(event.data)
     console.log(data)
 
+    
+
     if (data.status === "completed") {
+      console.log("ciao")
       clearCart()
+      disconnect()
     }
     setOrderStatus(data.status)
     setMessageWebsocket(data.message)
@@ -75,7 +79,8 @@ function Order() {
   // disconnect websocket connection
   const disconnect = () => {
     if (ws) {
-      ws.close()
+      console.log("disconnected")
+      ws.close(1000, 'hyjuahjksdh')
       setWebsocketStatus('disconnected')
     }
 

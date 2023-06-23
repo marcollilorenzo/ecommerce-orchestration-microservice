@@ -47,6 +47,18 @@ function Header() {
             >
                 <div className='flex flex-col relative h-full pb-16'>
                     <h2 className='text-center py-8'>Cart List</h2>
+                    <div className='flex justify-end'>
+
+        <button
+        className='bg-red-500 mx-4 mb-4 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'
+        onClick={() => {
+            localStorage.removeItem('cart')
+            window.location.reload()
+        }}
+        >
+            Delete all items
+        </button>
+        </div>
                     <CartListSection />  
                     <div className='fixed bottom-0 w-full  '>
                         <button onClick={

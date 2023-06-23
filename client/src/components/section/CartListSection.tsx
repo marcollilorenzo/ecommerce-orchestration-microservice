@@ -13,7 +13,7 @@ function CartListSection() {
   useEffect(() => {
     setProducts(getCartItems())
   }, [
-    window.localStorage.getItem('cart')
+
   ])
 
 

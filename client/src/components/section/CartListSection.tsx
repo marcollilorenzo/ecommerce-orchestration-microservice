@@ -12,9 +12,7 @@ function CartListSection() {
 
   useEffect(() => {
     setProducts(getCartItems())
-  }, [
-
-  ])
+  }, [])
 
 
   return (

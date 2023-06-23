@@ -10,14 +10,13 @@ function ProductListSection() {
     const [loading, setLoading] = useState(false)
     useEffect(() => {
         setLoading(true)
-        fetch('/api/products', { cache: 'reload' })
+        fetch('https://2jkazays2f.execute-api.eu-central-1.amazonaws.com/default/GetAllProducts', { cache: 'reload' })
             .then((res) => res.json())
             .then((data) => {
-
                 if (data.error) {
                     return
                 }
-                setProducts(data.body)
+                setProducts(data)
                 setLoading(false)
             })
             .catch((err) => {

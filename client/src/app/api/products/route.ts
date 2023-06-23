@@ -2,6 +2,13 @@ import { NextResponse } from 'next/server'
 import { DynamoDBClient, ScanCommand } from "@aws-sdk/client-dynamodb";
 import { Product } from '@/types/generic';
 
+type ResponseBody = {
+  error: boolean,
+  body: Product[] | string | any,
+  message?: string,
+};
+
+
 
 const client = new DynamoDBClient({
   region: process.env.AWS_REGION,
@@ -11,7 +18,7 @@ const client = new DynamoDBClient({
   },
 });
 
-export async function GET(res: NextResponse, req: Request) {
+export async function GET(res: NextResponse, req: Request) : Promise<NextResponse<ResponseBody>> {
 
   try {
 
@@ -55,20 +62,21 @@ export async function GET(res: NextResponse, req: Request) {
 
   }
 
-  function getItemValue(attribute: any) {
-    const dataType = Object.keys(attribute)[0];
-    const value = attribute[dataType];
+}
 
-    switch (dataType) {
-      case "N":
-        return parseFloat(value);
-      case "S":
-        return value;
-      case "BOOL":
-        return value === "true";
-      // Handle other data types as needed
-      default:
-        return null;
-    }
+function getItemValue(attribute: any) {
+  const dataType = Object.keys(attribute)[0];
+  const value = attribute[dataType];
+
+  switch (dataType) {
+    case "N":
+      return parseFloat(value);
+    case "S":
+      return value;
+    case "BOOL":
+      return value === "true";
+    // Handle other data types as needed
+    default:
+      return null;
   }
 }

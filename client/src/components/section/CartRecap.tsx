@@ -10,8 +10,15 @@ type Props = {}
 function CartRecap({ }: Props) {
 
     const router = useRouter()
-
     const [loading, setLoading] = React.useState(false)
+    const [total, setTotal] = React.useState(0)
+    const [quantity, setQuantity] = React.useState(0)
+
+    React.useEffect(() => {
+
+        setTotal(getCartTotal())
+        setQuantity(getCartItemCount())
+    }, [])
 
 
     const placeOrder = async () => {
@@ -60,8 +67,8 @@ function CartRecap({ }: Props) {
         <div>
             <h2>Recap</h2>
             <section className='my-4 bg-slate-200 p-4 rounded-md'>
-                <p>Subtotal: {getCartTotal()}</p>
-                <p>Quantity: {getCartItemCount()}</p>
+                <p>Subtotal: {total}</p>
+                <p>Quantity: {quantity}</p>
             </section>
             <button
                 onClick={() => placeOrder()}

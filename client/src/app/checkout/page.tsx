@@ -1,5 +1,5 @@
 
-
+'use client'
 import CartListSection from "@/components/section/CartListSection";
 import CartRecap from "@/components/section/CartRecap";
 

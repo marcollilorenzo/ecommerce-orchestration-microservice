@@ -39,10 +39,8 @@ function Header() {
                 onClose={toggleDrawer}
                 direction='right'
                 size={
-                    // if mobile, 90% else 50%
-                    // if window is not unefined
+                    '90%'
 
-                    window && window.innerWidth <= 768 ? '90%' : '30%'
 
                 }
                 
@@ -54,8 +52,11 @@ function Header() {
         <button
         className='bg-red-500 mx-4 mb-4 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'
         onClick={() => {
+            // if localost and windows
+            if(localStorage && window) {
             localStorage.removeItem('cart')
             window.location.reload()
+            }
         }}
         >
             Delete all items

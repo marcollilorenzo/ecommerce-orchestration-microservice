@@ -1,6 +1,4 @@
-export 
-// add product to cart using local storage
-const addToCart = (
+export const addToCart = (
     productId: number,
     name: string,
     price: number,

@@ -2,13 +2,20 @@
 'use client'
 import { Product } from '@/types/generic'
 import { getCartItems } from '@/utils/cart'
-import React from 'react'
+import React, { useEffect } from 'react'
 import ProductCardCart from '../card/ProductCardCart'
 
 
 function CartListSection() {
 
-    const products:Product[]  = getCartItems()
+  const [products, setProducts] = React.useState<Product[]>([])
+
+  useEffect(() => {
+    setProducts(getCartItems())
+  }, [
+    window.localStorage.getItem('cart')
+  ])
+
 
   return (
     <div 

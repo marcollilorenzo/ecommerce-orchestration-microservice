@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { DynamoDBClient, ScanCommand } from "@aws-sdk/client-dynamodb";
 import { Product } from '@/types/generic';
 
@@ -20,6 +20,7 @@ const client = new DynamoDBClient({
 
 export async function GET() : Promise<NextResponse<ResponseBody>> {
   
+  
 
   try {
 
@@ -28,6 +29,7 @@ export async function GET() : Promise<NextResponse<ResponseBody>> {
 
     if (!scanResult.Items) {
       return NextResponse.json({
+        
         error: true,
         body: 'no_items_found',
         message: 'No items found',

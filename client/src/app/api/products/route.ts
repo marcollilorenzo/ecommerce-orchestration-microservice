@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import { DynamoDBClient, ScanCommand } from "@aws-sdk/client-dynamodb";
 import { Product } from '@/types/generic';
 
@@ -19,6 +19,7 @@ const client = new DynamoDBClient({
 });
 
 export async function GET() : Promise<NextResponse<ResponseBody>> {
+  
 
   try {
 
@@ -33,6 +34,7 @@ export async function GET() : Promise<NextResponse<ResponseBody>> {
       }, {
         status: 404,
       })
+      
     }
 
     // create array of product

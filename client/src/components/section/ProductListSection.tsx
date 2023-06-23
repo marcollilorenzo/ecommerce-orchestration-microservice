@@ -10,7 +10,7 @@ function ProductListSection() {
     const [loading, setLoading] = useState(false)
     useEffect(() => {
         setLoading(true)
-        fetch('/api/products')
+        fetch('/api/products', {cache: 'no-cache'})
         .then((res) => res.json())
         .then((data) => {
 

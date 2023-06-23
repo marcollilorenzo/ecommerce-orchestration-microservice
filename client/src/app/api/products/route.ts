@@ -48,6 +48,8 @@ export async function GET() : Promise<NextResponse<ResponseBody>> {
       return formattedItem as Product;
     });
 
+    console.log(items)
+
 
     return NextResponse.json({
       error: false,

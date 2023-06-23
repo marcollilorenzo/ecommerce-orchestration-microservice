@@ -4,7 +4,7 @@ import { Product } from '@/types/generic'
 import React from 'react'
 
 
-function ProductCardCart({name, id, price, description, quantity, imageUrl}: Product) {
+function ProductCardCart({name, productId, price, description, quantity, imageUrl}: Product) {
   return (
     <div className='rounded-md shadow-md w-full h-full p-4 flex'>
         <div 

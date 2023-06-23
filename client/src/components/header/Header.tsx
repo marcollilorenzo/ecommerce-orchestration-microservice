@@ -40,7 +40,9 @@ function Header() {
                 direction='right'
                 size={
                     // if mobile, 90% else 50%
-                    window.innerWidth <= 768 ? '90%' : '30%'
+                    // if window is not unefined
+
+                    window && window.innerWidth <= 768 ? '90%' : '30%'
 
                 }
                 

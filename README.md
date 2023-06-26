@@ -1,20 +1,33 @@
-# Ecommerce Orchestration Microservice
+# e-Commerce Saga Orchestration Implementation
+Il presente progetto ha lo scopo di implementare un prototipo di flusso di un e-Commerce attraverso alcune tecnologie di Amazon AWS previste nel pattern della Saga Orchestration.
 
-Lorenzo Marcolli (mat. 08302A) <br />
-Alberto Rizzi (mart. 08303A)
+## Autori
+- Lorenzo Marcolli (mat. 08302A)
+- Alberto Rizzi (mart. 08303A)
 
 ## Diagram flow
-[Draw.io](https://drive.google.com/file/d/14FBuOeF2dJOKJoST7JyEinbuRB0JBPWc/view?usp=sharing)
+<div align="center">
+    <img src="assets/schema_high.jpg" width="95%" style="border-radius: 5px; padding: 10px; background-color: white"></img>
+</div>
 
-## Technologies
+[ 🔗 Draw.io](https://drive.google.com/file/d/14FBuOeF2dJOKJoST7JyEinbuRB0JBPWc/view?usp=sharing)
+
+## Relazione
+[ 🔗 Relazione](/assets/relazione.pdf)
+
+## Presentazione
+
+
+## Tecnologie usate
+### Cloud
+- AWS Lambda
+- AWS SQS
+- AWS Step Function
+- AWS API Gateway
+- AWS DynamoDB
 
 ### Client
 - Next.js
 - Typescript
 - Tailwind.css
 
-### Cloud
-- AWS Lambda
-- AWS SQS
-- AWS Step Function
-- AWS API Gateway

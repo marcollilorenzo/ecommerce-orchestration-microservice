@@ -17,6 +17,12 @@ Il presente progetto ha lo scopo di implementare un prototipo di flusso di un e-
 
 ## Presentazione
 
+## Live Demo
+[ 💻 Vercel](https://ecommerce-orchestration-microservice.vercel.app/)
+<div align="center">
+    <img src="assets/home_demo.png" width="80%" style="border-radius: 5px; padding: 10px; background-color: white"></img>
+</div>
+
 
 ## Tecnologie usate
 ### Cloud

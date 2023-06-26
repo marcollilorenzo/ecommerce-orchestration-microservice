@@ -14,8 +14,19 @@ function CartRecap({ }: Props) {
     const [total, setTotal] = React.useState(0)
     const [quantity, setQuantity] = React.useState(0)
 
-    React.useEffect(() => {
+    const [shippingAddress, setShippingAddress] = React.useState({
+        address: 'Test',
+        city: 'Test',
+        postCode: 'Test',
+    })
+    const [paymentDetails, setPaymentDetails] = React.useState({
+        cardNumber: 'Test',
+        expiry: 'Test',
+        ccv: 'Test',
+        cardholderName: 'Test',
+    })
 
+    React.useEffect(() => {
         setTotal(getCartTotal())
         setQuantity(getCartItemCount())
     }, [])
@@ -23,7 +34,9 @@ function CartRecap({ }: Props) {
 
     const placeOrder = async () => {
 
+        try {
 
+    
 
         setLoading(true)
 
@@ -32,20 +45,12 @@ function CartRecap({ }: Props) {
                 id: item.productId,
                 quantity: item.quantity,
             })),
-            shippingAddress: {
-                address: 'test',
-                city: 'test',
-                postCode: 'test',
-            },
-            paymentDetails: {
-                cardNumber: 'test',
-                expiry: 'test',
-                ccv: 'test',
-                cardholderName: 'test',
-            }
+            shippingAddress: shippingAddress,
+            paymentDetails: paymentDetails
         }
         
         console.log(order)
+
 
         console.log('place order')
 
@@ -61,15 +66,40 @@ function CartRecap({ }: Props) {
             // redirect to order page
             router.push(`/order?callbackUrl=${encodeURIComponent(data.callbackUrl + '?orderId=' + data.orderId)}`)
         }, 2000)
+    } catch (error) {
+        
+        console.log(error)
+    }
     }
 
     return (
         <div>
             <h2>Recap</h2>
             <section className='my-4 bg-slate-200 p-4 rounded-md'>
-                <p>Subtotal: {total}</p>
+                <p>Subtotal: {total} €</p>
                 <p>Quantity: {quantity}</p>
             </section>
+
+            <h2>Payment detail</h2>
+            <section className='my-4 bg-slate-200 p-4 rounded-md'>
+               <input
+               onChange={(e) => setPaymentDetails({...paymentDetails, ccv: e.target.value})}
+               type="number" placeholder="CCV" className="w-full p-2 border border-gray-300 rounded mb-4" />
+            </section>
+
+            <h2>Shipping address</h2>
+            <section className='my-4 bg-slate-200 p-4 rounded-md'>
+                <select
+                onChange={(e) => setShippingAddress({...shippingAddress, city: e.target.value})}
+                className="w-full p-2 border border-gray-300 rounded mb-4">
+                    <option value="italia">Italia</option>
+                    <option value="parigi">Parigi</option>
+                    <option value="spagna">Spagna</option>
+                    <option value="germania">Germania</option>
+                </select>
+            </section>
+
+
             <button
                 onClick={() => placeOrder()}
                 disabled={loading}
@@ -85,6 +115,8 @@ function CartRecap({ }: Props) {
 
                 }
             </button>
+
+          
 
         </div>
     )

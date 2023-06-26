@@ -15,15 +15,15 @@ function CartRecap({ }: Props) {
     const [quantity, setQuantity] = React.useState(0)
 
     const [shippingAddress, setShippingAddress] = React.useState({
-        address: 'Test',
-        city: 'Test',
-        postCode: 'Test',
+        address: 'Via Roma 1',
+        city: 'italia',
+        postCode: '21020',
     })
     const [paymentDetails, setPaymentDetails] = React.useState({
-        cardNumber: 'Test',
-        expiry: 'Test',
-        ccv: 'Test',
-        cardholderName: 'Test',
+        cardNumber: '424242424242',
+        expiry: '26/07',
+        ccv: 123,
+        cardholderName: 'Mario Rossi',
     })
 
     React.useEffect(() => {
@@ -83,13 +83,15 @@ function CartRecap({ }: Props) {
             <h2>Payment detail</h2>
             <section className='my-4 bg-slate-200 p-4 rounded-md'>
                <input
-               onChange={(e) => setPaymentDetails({...paymentDetails, ccv: e.target.value})}
+                defaultValue={paymentDetails.ccv}
+               onChange={(e) => setPaymentDetails({...paymentDetails, ccv: parseInt(e.target.value)})}
                type="number" placeholder="CCV" className="w-full p-2 border border-gray-300 rounded mb-4" />
             </section>
 
             <h2>Shipping address</h2>
             <section className='my-4 bg-slate-200 p-4 rounded-md'>
                 <select
+                defaultValue={shippingAddress.city}
                 onChange={(e) => setShippingAddress({...shippingAddress, city: e.target.value})}
                 className="w-full p-2 border border-gray-300 rounded mb-4">
                     <option value="italia">Italia</option>
@@ -102,7 +104,7 @@ function CartRecap({ }: Props) {
 
             <button
                 onClick={() => placeOrder()}
-                disabled={loading}
+                disabled={loading || quantity === 0}
                 className=
 
                 'disabled:opacity-50 disabled:animate-pulse bg-blue-500 w-full relative hover:bg-blue-700 text-white font-bold py-4 px-8 '>

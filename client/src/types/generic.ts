@@ -21,7 +21,7 @@ export type Checkout = {
         cardNumber: string
         cardholderName: string
         expiry: string
-        ccv: string
+        ccv: number
     }
 }
 

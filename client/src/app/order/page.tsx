@@ -20,7 +20,7 @@ function Order() {
 
   // state for order status (pending, completed, failed)
   const [orderStatus, setOrderStatus] = useState<OrderStatus>("pending");
-  const [messageWebsocket, setMessageWebsocket] = useState<string>('We receive the order, waiting...');
+  const [messageWebsocket, setMessageWebsocket] = useState<string>('Ordine in corso...');
 
   const [websocketStatus, setWebsocketStatus] = useState<"connected" | "disconnected" | "error">('disconnected')
 
@@ -116,7 +116,7 @@ function Order() {
                       : failedAnimation
 
               }
-              className="w-1/2 h-1/2"
+              className='w-64 h-64'
             >
             </Player>
           </div>

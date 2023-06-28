@@ -16,6 +16,7 @@ Il presente progetto ha lo scopo di implementare un prototipo di flusso di un e-
 [ 🔗 Relazione](/assets/relazione.pdf)
 
 ## Presentazione
+[ 🔗 Presentazione Lorenzo Marcolli](/assets/presentazione_marcolli.pdf)
 
 ## Live Demo
 [ 💻 Vercel](https://ecommerce-orchestration-microservice.vercel.app/)
@@ -36,4 +37,3 @@ Il presente progetto ha lo scopo di implementare un prototipo di flusso di un e-
 - Next.js
 - Typescript
 - Tailwind.css
-

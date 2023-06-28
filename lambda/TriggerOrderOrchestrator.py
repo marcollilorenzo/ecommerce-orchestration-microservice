@@ -4,6 +4,7 @@ import json
 def lambda_handler(event, context):
     try:
         stepFunctions = boto3.client('stepfunctions')
+        
         sqs_message = event['Records'][0]['body']
         
         print(sqs_message)

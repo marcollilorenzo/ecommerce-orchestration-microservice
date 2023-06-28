@@ -17,6 +17,7 @@ Il presente progetto ha lo scopo di implementare un prototipo di flusso di un e-
 
 ## Presentazione
 [ 🔗 Presentazione Lorenzo Marcolli](/assets/presentazione_marcolli.pdf)
+[ 🔗 Presentazione Alberto Rizzi](/assets/presentazione_rizzi.pdf)
 
 ## Live Demo
 [ 💻 Vercel](https://ecommerce-orchestration-microservice.vercel.app/)

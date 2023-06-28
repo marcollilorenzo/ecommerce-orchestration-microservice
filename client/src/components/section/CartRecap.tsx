@@ -54,6 +54,8 @@ function CartRecap({ }: Props) {
 
         console.log('place order')
 
+        try {
+
         const res = await fetch('https://gogmb2rqs6.execute-api.eu-central-1.amazonaws.com/default/PurchaseProduct',
             { method: "POST", body: JSON.stringify(order) })
 
@@ -66,6 +68,10 @@ function CartRecap({ }: Props) {
             // redirect to order page
             router.push(`/order?callbackUrl=${encodeURIComponent(data.callbackUrl + '?orderId=' + data.orderId)}`)
         }, 2000)
+    } catch (error) {
+        console.log(error)
+        setLoading(false)
+    }
     } catch (error) {
         
         console.log(error)

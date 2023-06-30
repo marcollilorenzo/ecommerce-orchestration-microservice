@@ -3,7 +3,7 @@ Il presente progetto ha lo scopo di implementare un prototipo di flusso di un e-
 
 ## Autori
 - Lorenzo Marcolli (mat. 08302A)
-- Alberto Rizzi (mart. 08303A)
+- Alberto Rizzi (mat. 08303A)
 
 ## Diagram flow
 <div align="center">
